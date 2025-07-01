@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Opening Kora...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const invitation = params.get('invitation');
+        const group = params.get('group');
+
+        const deepLink = `kora://join?invitation=${invitation}&group=${group}`;
+        const fallback = 'https://play.google.com/store/apps/details?id=com.morkam.kora';
+
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        const isAndroid = /android/i.test(ua);
+
+        // Android open logic
+        if (isAndroid) {
+          window.location.href = deepLink;
+          setTimeout(() => {
+            window.location.href = fallback;
+          }, 1500);
+        } else {
+          // For iOS or other devices: fallback only
+          window.location.href = fallback;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to Kora...</p>
+  </body>
+</html>
