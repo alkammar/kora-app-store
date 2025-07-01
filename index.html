@@ -10,7 +10,7 @@
         const group = params.get('group');
 
         const deepLink = `kora://join?invitation=${invitation}&group=${group}`;
-        const fallback = 'https://play.google.com/store/apps/details?id=com.morkam.kora';
+        const fallback = 'intent://details?id=com.morkam.kora#Intent;scheme=market;package=com.android.vending;end';
 
         const ua = navigator.userAgent || navigator.vendor || window.opera;
         const isAndroid = /android/i.test(ua);
